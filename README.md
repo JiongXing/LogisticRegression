@@ -25,6 +25,11 @@ print(y.info())
 
 # 划分数据集
 x_train, x_test, y_train, y_test = train_test_split(x, y)
+
+# 逻辑回归需要对特征数据做标准化
+std = StandardScaler()
+x_train = std.fit_transform(x_train)
+x_test = std.transform(x_test)
 ```
 
 输出：
@@ -78,11 +83,6 @@ None
 
 建模：
 ```
-# 逻辑回归需要对特征数据做标准化
-std = StandardScaler()
-x_train = std.fit_transform(x_train)
-x_test = std.transform(x_test)
-
 # 逻辑回归模型
 # C: 正则化力度
 lg = LogisticRegression(C=1.0)
